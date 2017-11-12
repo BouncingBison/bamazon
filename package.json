@@ -1,0 +1,31 @@
+{
+    "name": "bamazon",
+    "version": "1.0.0",
+    "description": "packages for bamazon assignment for the University of Kansas Bootcamp ",
+    "main": "bamazonCustomer.js",
+    "scripts": {
+
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+
+    "author": "michael ross curnes",
+    "license": "ISC",
+    "dependencies": {
+        "beeper": "^1.1.1",
+        "chalk": "^2.3.0",
+        "clear": "0.0.1",
+        "cli-boxes": "^1.0.0",
+        "cli-table": "^0.3.1",
+        "colors": "^1.1.2",
+        "express": "^4.16.2",
+        "figures": "^2.0.0",
+        "fs": "0.0.1-security",
+        "inquirer": "^3.3.0",
+        "inquirer-autocomplete-prompt": "^0.11.1",
+        "inquirer-chalk-pipe": "^1.1.0",
+        "inquirer-checkbox-status": "^1.0.0",
+        "mysql": "^2.15.0",
+        "sequelize": "^4.20.3",
+        "util": "^0.10.3"
+    }
+}
