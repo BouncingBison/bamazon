@@ -10,15 +10,8 @@ var cli_boxes = require('cli-boxes');
 var figures = require('figures');
 var chalk = require('chalk');
 var util = require('util');
+var connection = require('./config/connection.js');
 
-// creating our mySQL connection 
-var connection = mysql.createConnection({
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: '',
-    database: 'spice_rack_test'
-});
 // when we are connected the console will beep 4 times
 connection.connect(function(err) {
     if (err) throw (err);
@@ -96,10 +89,10 @@ function makeSelection() {
             return val;
         }
     }]).then(function(val) {
-        console.log(val);
-        console.log(val.products);
+        // console.log(val);
+        // console.log(val.products);
         var arr = val.products;
-        console.log("arr" + arr);
+        // console.log("arr" + arr);
         var cart = [];
         parseInt(arr)
         loader(arr, cart);
@@ -121,21 +114,41 @@ function makeSelection() {
             }
         }
 
+
+        function quantity(cart) {
+            for (i of cart) {
+                console.log(i);
+                inquirer.prompt([{
+                    type: 'input',
+                    name: 'ready',
+                    message: 'Input how many items you want to add to cart \n'
+                }]).then(function(input) {
+
+                    var quant = input.ready;
+
+                    for (input of ready) {
+                        let input * i.price =
+                            console.log(result);
+                    };
+                });
+            }
+        }
+
         function newCart(cart) {
-            // console.log("cart on 125:   " + parseInt(cart));
+            console.log("cart on 125:   " + parseInt(cart));
 
             var queryCheck = parseInt(cart);
             connection.query("SELECT * FROM products", function(err, res) {
-                // console.log(res);
-                // console.log(queryCheck);
+                // console.log("res", res);
+                console.log("qc", queryCheck);
                 for (i = 0; i < res.length; i++) {
                     // console.log(res[i].id);
                     if (res[i].id == queryCheck) {
-                        // console.log("it matches");
+                        // continue;
+                        console.log("it matches");
                         var priceCart = [];
-                        // cart.push(res[i].spiceName);
+                        cart.push(res[i].spiceName);
                         priceCart.push(res[i].price);
-
                     }
                 }
                 var sum;
@@ -143,8 +156,7 @@ function makeSelection() {
                     // console.log(item, index);       
                     sum = 0;
                     sum = priceCart[index] + sum;
-                    console.log(sum);
-
+                    console.log("sum", sum);
                 });
                 return cart;
                 // console.log(cart.length);
